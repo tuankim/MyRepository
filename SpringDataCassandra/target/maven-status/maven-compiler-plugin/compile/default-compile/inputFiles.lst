@@ -1,0 +1,7 @@
+/home/tuannh/eclipse-workspace/SpringDataCassandra/src/main/java/com/tuannh/cassandra/SpringDataCassandraApplication.java
+/home/tuannh/eclipse-workspace/SpringDataCassandra/src/main/java/com/tuannh/cassandra/model/Course.java
+/home/tuannh/eclipse-workspace/SpringDataCassandra/src/main/java/com/tuannh/cassandra/model/Student.java
+/home/tuannh/eclipse-workspace/SpringDataCassandra/src/main/java/com/tuannh/cassandra/repository/CustomerRepository.java
+/home/tuannh/eclipse-workspace/SpringDataCassandra/src/main/java/com/tuannh/cassandra/repository/StudentRepository.java
+/home/tuannh/eclipse-workspace/SpringDataCassandra/src/main/java/com/tuannh/cassandra/model/Customer.java
+/home/tuannh/eclipse-workspace/SpringDataCassandra/src/main/java/com/tuannh/cassandra/repository/CourseRepository.java
