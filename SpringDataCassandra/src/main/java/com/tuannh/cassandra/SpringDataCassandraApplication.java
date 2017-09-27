@@ -53,7 +53,7 @@ StudentRepository studentRepository;
 //        customerRepository.save(cust_4);
 //        customerRepository.save(cust_5);
 //        customerRepository.save(cust_6);
-		studentRepository.save(new Student(5,"Khoa",30));
+		studentRepository.save(new Student(6,"Khoa",30));
 	}
 	
 //	public void lookup(){
