@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import junit.extensions.TestSetup;
-import junit.framework.*;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 public class TestCourseStudent extends TestCase {
 	private static Logger logger = Logger.getLogger(TestCourseStudent.class);
