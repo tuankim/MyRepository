@@ -16,7 +16,7 @@ import com.tuannh.repository.CardCenterRepository;
 @SpringBootApplication(scanBasePackages={"com.tuannh.*"})
 @EnableJpaRepositories("com.tuannh.repository")
 @EntityScan("com.tuannh.model") 
-public class ApplicationConfig{
+public class ApplicationConfig{ 
 //	(scanBasePackages="com.tuannh.service")
 //	@Autowired
 //	private ContactService contactService;

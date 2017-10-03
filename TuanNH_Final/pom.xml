@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.javasampleapproach.cassandra</groupId>
-	<artifactId>SpringDataCassandra</artifactId>
+	<groupId>com.javasampleapproach.tuanh</groupId>
+	<artifactId>TuanFinal</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>SpringDataCassandra</name>
-	<description>SpringDataCassandra</description>
+	<name>TuanFinalTest</name>
+	<description>TuanFinalTest</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -40,12 +40,28 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<version>5.1.6</version>
 		</dependency>
 
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-data-elasticsearch</artifactId> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-data-cassandra</artifactId> -->
+<!-- 		</dependency> -->
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.taskadapter</groupId> -->
+<!-- 			<artifactId>redmine-java-api</artifactId> -->
+<!-- 			<version>2.6.0</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 
 	<build>
