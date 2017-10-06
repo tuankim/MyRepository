@@ -1,7 +1,6 @@
 package com.tuannh.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.UUID;
 
 import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
@@ -14,7 +13,7 @@ import org.springframework.data.cassandra.mapping.Table;
 public class Merchants implements java.io.Serializable {
 
 	@PrimaryKey
-	private Integer merchant_id;
+	private UUID merchant_id;
 	private String merchantName;
 	private String otherDetails;
 	private Integer amount;
@@ -32,11 +31,11 @@ public class Merchants implements java.io.Serializable {
 
 	// @PrimaryKey
 	// @Column(value = "Merchant_ID")
-	public Integer getMerchantId() {
+	public UUID getMerchantId() {
 		return this.merchant_id;
 	}
 
-	public Merchants(Integer merchant_id, String merchantName, String otherDetails, Integer amount) {
+	public Merchants(UUID merchant_id, String merchantName, String otherDetails, Integer amount) {
 		super();
 		this.merchant_id = merchant_id;
 		this.merchantName = merchantName;
@@ -44,7 +43,7 @@ public class Merchants implements java.io.Serializable {
 		this.amount = amount;
 	}
 
-	public void setMerchantId(Integer merchantId) {
+	public void setMerchantId(UUID merchantId) {
 		this.merchant_id = merchantId;
 	}
 

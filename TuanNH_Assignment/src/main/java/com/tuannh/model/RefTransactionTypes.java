@@ -1,7 +1,7 @@
 package com.tuannh.model;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
@@ -13,14 +13,14 @@ import org.springframework.data.cassandra.mapping.Table;
 @Table(value = "tuan_ref_transaction_types")
 public class RefTransactionTypes implements java.io.Serializable {
 
-	private Integer transactionTypeCode;
+	private UUID transactionTypeCode;
 	private String transactionTypeDescription;
-	private Set<TransactionData> transactiomData = new HashSet<TransactionData>(0);
+//	private Set<TransactionData> transactiomData = new HashSet<TransactionData>(0);
 
 	public RefTransactionTypes() {
 	}
 	
-	public RefTransactionTypes(Integer transactionTypeCode) {
+	public RefTransactionTypes(UUID transactionTypeCode) {
 		super();
 		this.transactionTypeCode = transactionTypeCode;
 	}
@@ -33,11 +33,11 @@ public class RefTransactionTypes implements java.io.Serializable {
 
 	@PrimaryKey
 	@Column(value = "Transaction_Type_Code")
-	public Integer getTransactionTypeCode() {
+	public UUID getTransactionTypeCode() {
 		return this.transactionTypeCode;
 	}
 
-	public void setTransactionTypeCode(Integer transactionTypeCode) {
+	public void setTransactionTypeCode(UUID transactionTypeCode) {
 		this.transactionTypeCode = transactionTypeCode;
 	}
 
@@ -50,12 +50,12 @@ public class RefTransactionTypes implements java.io.Serializable {
 		this.transactionTypeDescription = transactionTypeDescription;
 	}
 	
-	public Set<TransactionData> getTransactiomData() {
-		return transactiomData;
-	}
-
-	public void setTransactiomData(Set<TransactionData> transactiomData) {
-		this.transactiomData = transactiomData;
-	}
+//	public Set<TransactionData> getTransactiomData() {
+//		return transactiomData;
+//	}
+//
+//	public void setTransactiomData(Set<TransactionData> transactiomData) {
+//		this.transactiomData = transactiomData;
+//	}
 
 }

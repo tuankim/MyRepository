@@ -4,10 +4,11 @@ package com.tuannh.model;
 
 
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
@@ -19,48 +20,49 @@ import org.springframework.data.cassandra.mapping.Table;
  */
 @Table(value = "tuan_acquisitions")
 public class Acquisitions implements java.io.Serializable {
-
-	private Integer acquisitionId;
-	private Banks banks;
-	private String acquisitionDate;
+	
+	@PrimaryKey
+	private UUID acquisitionId;
+	private UUID banks;
+	private Date acquisitionDate;
 	private String otherDetails;
-	private Set<DataTransfers> dataTransferses = new HashSet<DataTransfers>(0);
+//	private Set<DataTransfers> dataTransferses = new HashSet<DataTransfers>(0);
 
 	public Acquisitions() {
 	}
 
-	public Acquisitions(Banks banks, String acquisitionDate, String otherDetails, Set<DataTransfers> dataTransferses) {
+	public Acquisitions(UUID banks, Date acquisitionDate, String otherDetails) {
 		this.banks = banks;
 		this.acquisitionDate = acquisitionDate;
 		this.otherDetails = otherDetails;
-		this.dataTransferses = dataTransferses;
+//		this.dataTransferses = dataTransferses;
 	}
 
-	@PrimaryKey
+	
 	@Column(value = "Acquisition_ID")
-	public Integer getAcquisitionId() {
+	public UUID getAcquisitionId() {
 		return this.acquisitionId;
 	}
 
-	public void setAcquisitionId(Integer acquisitionId) {
+	public void setAcquisitionId(UUID acquisitionId) {
 		this.acquisitionId = acquisitionId;
 	}
 
 	@Column(value = "Bank_ID")
-	public Banks getBanks() {
+	public UUID getBanks() {
 		return this.banks;
 	}
 
-	public void setBanks(Banks banks) {
+	public void setBanks(UUID banks) {
 		this.banks = banks;
 	}
 
 	@Column(value = "Acquisition_Date")
-	public String getAcquisitionDate() {
+	public Date getAcquisitionDate() {
 		return this.acquisitionDate;
 	}
 
-	public void setAcquisitionDate(String acquisitionDate) {
+	public void setAcquisitionDate(Date acquisitionDate) {
 		this.acquisitionDate = acquisitionDate;
 	}
 
@@ -74,12 +76,12 @@ public class Acquisitions implements java.io.Serializable {
 	}
 
 	
-	public Set<DataTransfers> getDataTransferses() {
-		return this.dataTransferses;
-	}
-
-	public void setDataTransferses(Set<DataTransfers> dataTransferses) {
-		this.dataTransferses = dataTransferses;
-	}
+//	public Set<DataTransfers> getDataTransferses() {
+//		return this.dataTransferses;
+//	}
+//
+//	public void setDataTransferses(Set<DataTransfers> dataTransferses) {
+//		this.dataTransferses = dataTransferses;
+//	}
 
 }

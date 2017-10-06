@@ -1,6 +1,7 @@
 package com.tuannh.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.tuannh.model.CartCenters;
 import com.tuannh.model.Merchants;
@@ -16,7 +17,7 @@ public interface TransactionDataService {
 	
 	void ProcessAmountMerchants(TransactionData transactionData);
 	
-	CartCenters getcartCenter(Integer cardCenterID);
+	CartCenters getcartCenter(UUID cardCenterID);
 	
-	Merchants getMerchants(Integer dataTransferID);
+	Merchants getMerchants(UUID dataTransferID);
 }

@@ -1,6 +1,8 @@
 package com.tuannh.service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +54,7 @@ public class TransactionDataServiceImpl implements TransactionDataService{
 	public void ProcessAmountCardCenter(TransactionData transactionData) {
 		CartCenters cardCenter=getcartCenter(transactionData.getCardEnter());
 		cardCenter.setAmount(cardCenter.getAmount()-transactionData.getTransactionAmount());
+		
 		cardCenterRepository.save(cardCenter);
 		
 	}
@@ -68,22 +71,25 @@ public class TransactionDataServiceImpl implements TransactionDataService{
 	@Override
 	public void save(TransactionData transactionData) {
 		// TODO Auto-generated method stub
+		transactionData.setTransactionId(UUID.randomUUID());
+		LocalDate today = LocalDate.now();
+		transactionData.setTransactionDate(today);;
 		transactionDataRepository.save(transactionData);
 	}
 
 	@Override
-	public CartCenters getcartCenter(Integer cardCenterID) {
+	public CartCenters getcartCenter(UUID cardCenterID) {
 		// TODO Auto-generated method stub
 		System.out.println(cardCenterRepository.findOne(cardCenterID).toString());
 		return cardCenterRepository.findOne(cardCenterID);
 	}
 
 	@Override
-	public Merchants getMerchants(Integer dataTransferID) {
+	public Merchants getMerchants(UUID dataTransferID) {
 		// TODO Auto-generated method stub
 		DataTransfers data=dataTransferRepository.findOne(dataTransferID);
 		
-		return merchantRepository.findOne(data.getMerchants().getMerchantId());
+		return merchantRepository.findOne(data.getMerchants());
 	}
 	
 	

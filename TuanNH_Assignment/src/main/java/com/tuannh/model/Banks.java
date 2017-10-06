@@ -2,8 +2,8 @@ package com.tuannh.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
@@ -16,38 +16,39 @@ import org.springframework.data.cassandra.mapping.Table;
 @Table(value = "tuan_banks")
 public class Banks implements java.io.Serializable {
 
-	private Integer bankId;
-	private Addresses addresses;
+	@PrimaryKey
+	private UUID bankId;
+	private UUID addresses;
 	private String bankName;
 	private String bankDetails;
-	private Set<Acquisitions> acquisitionses = new HashSet<Acquisitions>(0);
+//	private Set<Acquisitions> acquisitionses = new HashSet<Acquisitions>(0);
 
 	public Banks() {
 	}
 
-	public Banks(Addresses addresses, String bankName, String bankDetails, Set<Acquisitions> acquisitionses) {
+	public Banks(UUID addresses, String bankName, String bankDetails) {
 		this.addresses = addresses;
 		this.bankName = bankName;
 		this.bankDetails = bankDetails;
-		this.acquisitionses = acquisitionses;
+//		this.acquisitionses = acquisitionses;
 	}
 
-	@PrimaryKey
+	
 	@Column(value = "Bank_ID")
-	public Integer getBankId() {
+	public UUID getBankId() {
 		return this.bankId;
 	}
 
-	public void setBankId(Integer bankId) {
+	public void setBankId(UUID bankId) {
 		this.bankId = bankId;
 	}
 
 	@Column(value = "Address_ID")
-	public Addresses getAddresses() {
+	public UUID getAddresses() {
 		return this.addresses;
 	}
 
-	public void setAddresses(Addresses addresses) {
+	public void setAddresses(UUID addresses) {
 		this.addresses = addresses;
 	}
 
@@ -69,12 +70,12 @@ public class Banks implements java.io.Serializable {
 		this.bankDetails = bankDetails;
 	}
 
-	public Set<Acquisitions> getAcquisitionses() {
-		return this.acquisitionses;
-	}
-
-	public void setAcquisitionses(Set<Acquisitions> acquisitionses) {
-		this.acquisitionses = acquisitionses;
-	}
+//	public Set<Acquisitions> getAcquisitionses() {
+//		return this.acquisitionses;
+//	}
+//
+//	public void setAcquisitionses(Set<Acquisitions> acquisitionses) {
+//		this.acquisitionses = acquisitionses;
+//	}
 
 }

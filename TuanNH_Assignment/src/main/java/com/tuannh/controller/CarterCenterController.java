@@ -1,6 +1,7 @@
 package com.tuannh.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -50,7 +51,7 @@ public class CarterCenterController {
 	 // ------------------- Update a CardCenters ------------------------------------------------
 	 
     @RequestMapping(value = "/cardcenter/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateUser(@PathVariable("id") int id, @RequestBody CartCenters cartCenter) {
+    public ResponseEntity<?> updateUser(@PathVariable("id") UUID id, @RequestBody CartCenters cartCenter) {
         
         CartCenters card = cardCenterService.findOne(id);
         card.setCardCenterId(cartCenter.getCardCenterId());
@@ -63,7 +64,7 @@ public class CarterCenterController {
     // ------------------- Delete a CardCenters-----------------------------------------
  
     @RequestMapping(value = "/cardcenter/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteUser(@PathVariable("id") int id) {
+    public ResponseEntity<?> deleteUser(@PathVariable("id") UUID id) {
        
         CartCenters card = cardCenterService.findOne(id);
         

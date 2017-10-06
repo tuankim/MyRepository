@@ -2,13 +2,13 @@
 CREATE TABLE tuan_acquisitions (
   Acquisition_ID UUID,
   Bank_ID UUID,
-  Acquisition_Date text,
+  Acquisition_Date date,
   Other_Details text,
   PRIMARY KEY (Acquisition_ID),
   
 );
 
-INSERT INTO tuan_acquisitions(Acquisition_ID,Bank_ID,Acquisition_Date,Other_Details) VALUES (blobAsUuid(timeuuidAsBlob(now())),ee8e04d0-a8f8-11e7-8cfe-a5f52bec59f9,'20-10-2017','1');
+INSERT INTO tuan_acquisitions(Acquisition_ID,Bank_ID,Acquisition_Date,Other_Details) VALUES (blobAsUuid(timeuuidAsBlob(now())),ee8e04d0-a8f8-11e7-8cfe-a5f52bec59f9,'2017-10-10','1');
 
 
 --
@@ -72,14 +72,14 @@ CREATE TABLE tuan_data_transfers (
   Data_Tranfer_ID UUID,
   Acquisition_ID UUID,
   Merchants_ID UUID,
-  Data_Transfer_Date text,
+  Data_Transfer_Date date,
   Merchants_Fees text,
   Other_Detail text,
   PRIMARY KEY (Data_Tranfer_ID),
   
 ) ;
 
-INSERT INTO tuan_data_transfers(Data_Tranfer_ID,Acquisition_ID,Merchants_ID,Data_Transfer_Date,Merchants_Fees,Other_Detail) VALUES (blobAsUuid(timeuuidAsBlob(now())),2fe26a20-a8f9-11e7-8cfe-a5f52bec59f9,7ae8f520-a8f9-11e7-8cfe-a5f52bec59f9,'20-10-2017','1','1');
+INSERT INTO tuan_data_transfers(Data_Tranfer_ID,Acquisition_ID,Merchants_ID,Data_Transfer_Date,Merchants_Fees,Other_Detail) VALUES (blobAsUuid(timeuuidAsBlob(now())),2fe26a20-a8f9-11e7-8cfe-a5f52bec59f9,7ae8f520-a8f9-11e7-8cfe-a5f52bec59f9,'2017-10-10','1','1');
 
 
 --
@@ -112,12 +112,12 @@ CREATE TABLE tuan_transaction_data (
   Card_enter_ID UUID,
   Data_Transfer_ID UUID,
   Transaction_Type_Code UUID,
-  Transaction_Date text,
+  Transaction_Date date,
   Transaction_Amount int,
   Other_Details text,
   PRIMARY KEY (Transaction_ID),
  
 ) ;
 
-INSERT INTO tuan_transaction_data(Transaction_ID,Card_enter_ID,Data_Transfer_ID,Transaction_Type_Code,Transaction_Date,Transaction_Amount,Other_Details) VALUES (blobAsUuid(timeuuidAsBlob(now())),d1d787b0-a8f0-11e7-8cfe-a5f52bec59f9,f59a6970-a8f9-11e7-8cfe-a5f52bec59f9,a4987f30-a8f9-11e7-8cfe-a5f52bec59f9,'20-10-2017',20,'1');
+INSERT INTO tuan_transaction_data(Transaction_ID,Card_enter_ID,Data_Transfer_ID,Transaction_Type_Code,Transaction_Date,Transaction_Amount,Other_Details) VALUES (blobAsUuid(timeuuidAsBlob(now())),d1d787b0-a8f0-11e7-8cfe-a5f52bec59f9,f59a6970-a8f9-11e7-8cfe-a5f52bec59f9,a4987f30-a8f9-11e7-8cfe-a5f52bec59f9,'2017-10-10',20,'1');
 

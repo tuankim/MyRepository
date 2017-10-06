@@ -1,6 +1,7 @@
 package com.tuannh.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,17 +27,18 @@ public class CardCenterServiceImpl implements CardCenterService{
 		@Override
 		public CartCenters save(CartCenters cardCenter) {
 			// TODO Auto-generated method stub
+			cardCenter.setCardCenterId(UUID.randomUUID());
 			return cardCenterRepository.save(cardCenter);
 		}
 
 		@Override
-		public CartCenters findOne(Integer id) {
+		public CartCenters findOne(UUID id) {
 			// TODO Auto-generated method stub
 			return cardCenterRepository.findOne(id);
 		}
 
 		@Override
-		public void deleteById(Integer id) {
+		public void deleteById(UUID id) {
 			// TODO Auto-generated method stub
 			cardCenterRepository.delete(id);;
 			

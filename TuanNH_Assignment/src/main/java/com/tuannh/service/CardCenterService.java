@@ -1,6 +1,7 @@
 package com.tuannh.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.tuannh.model.CartCenters;
 
@@ -9,9 +10,9 @@ public interface CardCenterService {
 	
 	CartCenters save(CartCenters cardCenter);
 	
-	CartCenters findOne(Integer id);
+	CartCenters findOne(UUID id);
 	
-	void deleteById(Integer id);
+	void deleteById(UUID id);
 	
 	void deleteAll();
 }

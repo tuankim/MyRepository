@@ -2,8 +2,7 @@ package com.tuannh.model;
 
 
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.UUID;
 
 import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
@@ -16,7 +15,7 @@ import org.springframework.data.cassandra.mapping.Table;
 public class CartCenters  {
 	
 	@PrimaryKey
-	private Integer card_Center_Id;
+	private UUID card_Center_Id;
 	private String cartCenterDetails;
 	private Integer amount;
 	
@@ -37,7 +36,7 @@ public class CartCenters  {
 	
 	
 	
-	public CartCenters(Integer cardCenterId, String cartCenterDetails, Integer amount) {
+	public CartCenters(UUID cardCenterId, String cartCenterDetails, Integer amount) {
 		super();
 		this.card_Center_Id = cardCenterId;
 		this.cartCenterDetails = cartCenterDetails;
@@ -46,11 +45,11 @@ public class CartCenters  {
 
 	
 	@Column(value = "card_Center_Id")
-	public Integer getCardCenterId() {
+	public UUID getCardCenterId() {
 		return this.card_Center_Id;
 	}
 
-	public void setCardCenterId(Integer cardCenterId) {
+	public void setCardCenterId(UUID cardCenterId) {
 		this.card_Center_Id = cardCenterId;
 	}
 
