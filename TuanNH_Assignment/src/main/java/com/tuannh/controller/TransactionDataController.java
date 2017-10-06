@@ -46,6 +46,16 @@ public class TransactionDataController {
 		}
 		return new ResponseEntity<List<TransactionData>>(list, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/transactionDataAllInfomation/", method = RequestMethod.GET)
+	public ResponseEntity<List<TransactionData>> listTransactionDataAllInfomation() {
+		List<TransactionData> list = transactionDataService.findAllInfomation();
+		if (list.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
+		return new ResponseEntity<List<TransactionData>>(list, HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/transactionDataForIDCartCenter/", method = RequestMethod.POST)
 	public ResponseEntity<List<TransactionData>> listAllTransactionDataForIDCartCenter(

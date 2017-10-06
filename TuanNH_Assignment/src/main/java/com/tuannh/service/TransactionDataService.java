@@ -24,4 +24,6 @@ public interface TransactionDataService {
 	List<TransactionData> filterForCartCenter(UUID idCartCenter);
 
 	CartCenters infomationCartCenterForTransactionData(UUID idTransactionData);
+	
+	List<TransactionData> findAllInfomation();
 }

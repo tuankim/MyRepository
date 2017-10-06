@@ -103,4 +103,19 @@ public class TransactionDataServiceImpl implements TransactionDataService{
 		// TODO Auto-generated method stub
 		return cardCenterRepository.findOne(transactionDataRepository.findOne(idTransactionData).getCardEnter());
 	}
+
+	@Override
+	public List<TransactionData> findAllInfomation() {
+		// TODO Auto-generated method stub
+		List<TransactionData> list=(List<TransactionData>) transactionDataRepository.findAll();
+		for (TransactionData transactionData : list) {
+			CartCenters cardCenter=getcartCenter(transactionData.getCardEnter());
+			transactionData.setCartCenters(cardCenter);
+			Merchants merchant=getMerchants(transactionData.getDataTransfer());
+			transactionData.setMerchants(merchant);
+		}
+		return null;
+	}
+	
+	
 }

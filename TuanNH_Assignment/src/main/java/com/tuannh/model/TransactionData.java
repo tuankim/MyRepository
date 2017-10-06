@@ -114,5 +114,36 @@ public class TransactionData implements java.io.Serializable {
 	public void setTransaction(UUID transaction) {
 		this.transaction = transaction;
 	}
+	
+	private CartCenters cartCenters;
+	private RefTransactionTypes refTransactionTypes;
+	private Merchants merchants;
 
+	public CartCenters getCartCenters() {
+		return cartCenters;
+	}
+
+	public void setCartCenters(CartCenters cartCenters) {
+		this.cartCenters = cartCenters;
+	}
+
+	public RefTransactionTypes getRefTransactionTypes() {
+		return refTransactionTypes;
+	}
+
+	public void setRefTransactionTypes(RefTransactionTypes refTransactionTypes) {
+		this.refTransactionTypes = refTransactionTypes;
+	}
+
+	public Merchants getMerchants() {
+		return merchants;
+	}
+
+	public void setMerchants(Merchants merchants) {
+		this.merchants = merchants;
+	}
+
+	
+
+	
 }
