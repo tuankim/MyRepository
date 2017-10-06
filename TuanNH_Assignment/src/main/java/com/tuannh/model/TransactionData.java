@@ -18,7 +18,7 @@ public class TransactionData implements java.io.Serializable {
 	private UUID transaction_id;
 	private UUID cardEnter;
 	private UUID dataTransfer;
-	private UUID reftransaction;
+	private UUID transaction;
 	private LocalDate transactionDate;
 	private Integer transactionAmount;
 	private String otherDetails;
@@ -39,13 +39,13 @@ public class TransactionData implements java.io.Serializable {
 	// this.otherDetails = otherDetails;
 	// }
 	
-	public TransactionData(UUID transaction_Id, UUID cardEnter, UUID dataTransfer, UUID reftransaction,
+	public TransactionData(UUID transaction_Id, UUID cardEnter, UUID dataTransfer, UUID transaction,
 			LocalDate transactionDate, Integer transactionAmount, String otherDetails) {
 		super();
 		this.transaction_id = transaction_Id;
 		this.cardEnter = cardEnter;
 		this.dataTransfer = dataTransfer;
-		this.reftransaction = reftransaction;
+		this.transaction = transaction;
 		this.transactionDate = transactionDate;
 		this.transactionAmount = transactionAmount;
 		this.otherDetails = otherDetails;
@@ -108,11 +108,11 @@ public class TransactionData implements java.io.Serializable {
 
 	@Column(value = "Transaction_Type_Code")
 	public UUID getTransaction() {
-		return reftransaction;
+		return transaction;
 	}
 
-	public void setTransaction(UUID reftransaction) {
-		this.reftransaction = reftransaction;
+	public void setTransaction(UUID transaction) {
+		this.transaction = transaction;
 	}
 
 }

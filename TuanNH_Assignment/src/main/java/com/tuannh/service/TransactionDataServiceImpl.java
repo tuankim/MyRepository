@@ -52,6 +52,7 @@ public class TransactionDataServiceImpl implements TransactionDataService{
 	
 	@Override
 	public void ProcessAmountCardCenter(TransactionData transactionData) {
+		
 		CartCenters cardCenter=getcartCenter(transactionData.getCardEnter());
 		cardCenter.setAmount(cardCenter.getAmount()-transactionData.getTransactionAmount());
 		
@@ -71,7 +72,6 @@ public class TransactionDataServiceImpl implements TransactionDataService{
 	@Override
 	public void save(TransactionData transactionData) {
 		// TODO Auto-generated method stub
-		transactionData.setTransactionId(UUID.randomUUID());
 		LocalDate today = LocalDate.now();
 		transactionData.setTransactionDate(today);;
 		transactionDataRepository.save(transactionData);
@@ -80,7 +80,7 @@ public class TransactionDataServiceImpl implements TransactionDataService{
 	@Override
 	public CartCenters getcartCenter(UUID cardCenterID) {
 		// TODO Auto-generated method stub
-		System.out.println(cardCenterRepository.findOne(cardCenterID).toString());
+//		System.out.println("ssssssssssss"+cardCenterRepository.findOne(cardCenterID).toString());
 		return cardCenterRepository.findOne(cardCenterID);
 	}
 
@@ -92,5 +92,15 @@ public class TransactionDataServiceImpl implements TransactionDataService{
 		return merchantRepository.findOne(data.getMerchants());
 	}
 	
-	
+	@Override
+	public List<TransactionData> filterForCartCenter(UUID idCartCenter) {
+		// TODO Auto-generated method stub
+		return (List<TransactionData>) transactionDataRepository.filterForCartCenter(idCartCenter);
+	}
+
+	@Override
+	public CartCenters infomationCartCenterForTransactionData(UUID idTransactionData) {
+		// TODO Auto-generated method stub
+		return cardCenterRepository.findOne(transactionDataRepository.findOne(idTransactionData).getCardEnter());
+	}
 }

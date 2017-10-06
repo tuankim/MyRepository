@@ -11,10 +11,6 @@ CREATE TABLE tuan_acquisitions (
 INSERT INTO tuan_acquisitions(Acquisition_ID,Bank_ID,Acquisition_Date,Other_Details) VALUES (blobAsUuid(timeuuidAsBlob(now())),ee8e04d0-a8f8-11e7-8cfe-a5f52bec59f9,'2017-10-10','1');
 
 
---
--- Table structure for table `tuan_addresses`
---
-
 CREATE TABLE tuan_addresses (
   Address_ID UUID ,
   Line_1 text,
@@ -31,11 +27,6 @@ CREATE TABLE tuan_addresses (
 INSERT INTO tuan_addresses(Address_ID,Line_1,Line_2,Town_City,Zip_PostCode,State_Provice_Contry,Country,Other_Details) VALUES (blobAsUuid(timeuuidAsBlob(now())),'dong1','dong2','HN',100,'HN','VN','1');
 
 
---
--- Table structure for table `tuan_banks`
---
-
-
 CREATE TABLE tuan_banks (
   Bank_ID UUID,
   Address_ID UUID,
@@ -48,10 +39,6 @@ CREATE TABLE tuan_banks (
 INSERT INTO tuan_banks(Bank_ID,Address_ID,Bank_Name,Bank_Details) VALUES (blobAsUuid(timeuuidAsBlob(now())),70c93600-a8f8-11e7-8cfe-a5f52bec59f9,'mb','1');
 
 
---
--- Table structure for table `tuan_cart_centers`
---
-
 
 CREATE TABLE tuan_cart_centers (
   Card_Center_ID UUID,
@@ -61,9 +48,6 @@ CREATE TABLE tuan_cart_centers (
 ) ;
 
 INSERT INTO tuan_cart_centers (card_center_id,amount,cart_center_details) values(blobAsUuid(timeuuidAsBlob(now())), 100,'1');
---
--- Dumping data for table `tuan_cart_centers`
---
 
 
 INSERT INTO tuan_cart_centers VALUES (1,'1',80);,(3,'2',200);
@@ -82,10 +66,6 @@ CREATE TABLE tuan_data_transfers (
 INSERT INTO tuan_data_transfers(Data_Tranfer_ID,Acquisition_ID,Merchants_ID,Data_Transfer_Date,Merchants_Fees,Other_Detail) VALUES (blobAsUuid(timeuuidAsBlob(now())),2fe26a20-a8f9-11e7-8cfe-a5f52bec59f9,7ae8f520-a8f9-11e7-8cfe-a5f52bec59f9,'2017-10-10','1','1');
 
 
---
--- Table structure for table `tuan_merchants`
---
-
 CREATE TABLE tuan_merchants (
   Merchant_ID UUID,
   Merchant_Name text,
@@ -102,7 +82,7 @@ CREATE TABLE tuan_ref_transaction_types (
   Transaction_Type_Code UUID,
   Transaction_Type_Description text,
   PRIMARY KEY (Transaction_Type_Code)
-) 
+);
 
 INSERT INTO tuan_ref_transaction_types(Transaction_Type_Code,Transaction_Type_Description) VALUES (blobAsUuid(timeuuidAsBlob(now())),'1');
 

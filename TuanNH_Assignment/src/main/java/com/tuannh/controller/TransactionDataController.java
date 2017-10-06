@@ -13,41 +13,55 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.tuannh.model.CartCenters;
 import com.tuannh.model.TransactionData;
-import com.tuannh.model.TransactionDataInfo;
 import com.tuannh.service.TransactionDataService;
 
 @RestController
-@RequestMapping("/api") 
+@RequestMapping("/api")
 public class TransactionDataController {
 	@Autowired
 	TransactionDataService transactionDataService;
-	
+
 	@RequestMapping(value = "/transactionData/", method = RequestMethod.POST)
-    public ResponseEntity<?> createTransactionData(@RequestBody TransactionDataInfo transactionDataInfo, UriComponentsBuilder ucBuilder) {
-        
-		TransactionData transactionData=new TransactionData();
-        transactionData.setCardEnter(UUID.fromString(transactionDataInfo.getCardEnter()));
-        transactionData.setDataTransfer(UUID.fromString(transactionDataInfo.getDataTransfer()));
-        transactionData.setTransaction(UUID.fromString(transactionDataInfo.getReftransaction()));
-        transactionData.setTransactionAmount(transactionDataInfo.getTransactionAmount());
-        transactionData.setOtherDetails(transactionDataInfo.getOtherDetails());
-        
+	public ResponseEntity<?> createTransactionData(@RequestBody TransactionData transactionData,
+			UriComponentsBuilder ucBuilder) {
+
+		transactionData.setTransactionId(UUID.randomUUID());
 		transactionDataService.save(transactionData);
-        transactionDataService.ProcessAmountCardCenter(transactionData);
-        transactionDataService.ProcessAmountMerchants(transactionData);       
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/transactionData/{id}").buildAndExpand(transactionData.getTransactionId()).toUri());
-        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
-    }
-	
+		transactionDataService.ProcessAmountCardCenter(transactionData);
+		transactionDataService.ProcessAmountMerchants(transactionData);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setLocation(
+				ucBuilder.path("/api/transactionData/{id}").buildAndExpand(transactionData.getTransactionId()).toUri());
+		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+	}
+
 	@RequestMapping(value = "/transactionData/", method = RequestMethod.GET)
-    public ResponseEntity<List<TransactionData>> listAllTransactionData() {
-        List<TransactionData> list = transactionDataService.findAll();
-        if (list.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-            // You many decide to return HttpStatus.NOT_FOUND
-        }
-        return new ResponseEntity<List<TransactionData>>(list, HttpStatus.OK);
-    }
+	public ResponseEntity<List<TransactionData>> listAllTransactionData() {
+		List<TransactionData> list = transactionDataService.findAll();
+		if (list.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
+		return new ResponseEntity<List<TransactionData>>(list, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/transactionDataForIDCartCenter/", method = RequestMethod.POST)
+	public ResponseEntity<List<TransactionData>> listAllTransactionDataForIDCartCenter(
+			@RequestBody UUID idCartCenter) {
+		List<TransactionData> list = transactionDataService.filterForCartCenter(idCartCenter);
+		if (list.isEmpty()) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			// You many decide to return HttpStatus.NOT_FOUND
+		}
+		return new ResponseEntity<List<TransactionData>>(list, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/infomationCardCenterForTransactionData/", method = RequestMethod.POST)
+	public ResponseEntity<CartCenters> listinformationCardCenter(@RequestBody UUID idTransactionData) {
+		CartCenters card = transactionDataService.infomationCartCenterForTransactionData(idTransactionData);
+
+		return new ResponseEntity<CartCenters>(card, HttpStatus.OK);
+	}
 }
