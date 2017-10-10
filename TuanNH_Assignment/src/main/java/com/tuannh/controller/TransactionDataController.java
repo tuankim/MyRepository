@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.tuannh.model.TransactionData;
-import com.tuannh.model.TransactionDataInfo;
 import com.tuannh.service.TransactionDataService;
 
 @RestController

@@ -27,7 +27,7 @@ public class CardCenterServiceImpl implements CardCenterService{
 		@Override
 		public CartCenters save(CartCenters cardCenter) {
 			// TODO Auto-generated method stub
-			cardCenter.setCardCenterId(UUID.randomUUID());
+		
 			return cardCenterRepository.save(cardCenter);
 		}
 

@@ -28,7 +28,6 @@ public class CarterCenterController {
 	@RequestMapping(value = "/cardcenter/", method = RequestMethod.GET)
     public ResponseEntity<List<CartCenters>> listAll() {
         List<CartCenters> list = cardCenterService.findAll();
-        System.out.println("ssssssss"+list.get(0).getCardCenterId());
         if (list.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
             // You many decide to return HttpStatus.NOT_FOUND
@@ -40,7 +39,7 @@ public class CarterCenterController {
 	
 	@RequestMapping(value = "/cardcenter/", method = RequestMethod.POST)
     public ResponseEntity<?> createTransactionData(@RequestBody CartCenters cartCenter, UriComponentsBuilder ucBuilder) {
-		
+		cartCenter.setCardCenterId(UUID.randomUUID());
         cardCenterService.save(cartCenter);
         
         HttpHeaders headers = new HttpHeaders();
