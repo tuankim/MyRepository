@@ -24,14 +24,14 @@ public class TransactionDataController {
 	TransactionDataService transactionDataService;
 	
 	@RequestMapping(value = "/transactionData/", method = RequestMethod.POST)
-    public ResponseEntity<?> createTransactionData(@RequestBody TransactionDataInfo transactionDataInfo, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> createTransactionData(@RequestBody TransactionData transactionData, UriComponentsBuilder ucBuilder) {
         
-		TransactionData transactionData=new TransactionData();
-        transactionData.setCardEnter(UUID.fromString(transactionDataInfo.getCardEnter()));
-        transactionData.setDataTransfer(UUID.fromString(transactionDataInfo.getDataTransfer()));
-        transactionData.setTransaction(UUID.fromString(transactionDataInfo.getReftransaction()));
-        transactionData.setTransactionAmount(transactionDataInfo.getTransactionAmount());
-        transactionData.setOtherDetails(transactionDataInfo.getOtherDetails());
+//		TransactionData transactionData=new TransactionData();
+//        transactionData.setCardEnter(UUID.fromString(transactionDataInfo.getCardEnter()));
+//        transactionData.setDataTransfer(UUID.fromString(transactionDataInfo.getDataTransfer()));
+//        transactionData.setTransaction(UUID.fromString(transactionDataInfo.getReftransaction()));
+//        transactionData.setTransactionAmount(transactionDataInfo.getTransactionAmount());
+//        transactionData.setOtherDetails(transactionDataInfo.getOtherDetails());
         
 		transactionDataService.save(transactionData);
         transactionDataService.ProcessAmountCardCenter(transactionData);
