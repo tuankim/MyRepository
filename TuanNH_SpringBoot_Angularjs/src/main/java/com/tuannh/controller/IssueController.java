@@ -3,6 +3,7 @@ package com.tuannh.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +24,37 @@ public class IssueController {
 
 	@Autowired
 	IssueService issueService;
+	
+	private  List<Issue> issues;
 
 	public IssueController() {
 		super();
+		System.setProperty("http.proxyHost","10.225.3.1");
+		System.setProperty("http.proxyPort","3128");
+		String uri = "http://apis.ifisolution.local:8080";
+		String projectKey = "training-project";
+		Integer queryId = null; // any
+
+		RedmineManager mgr = RedmineManagerFactory.createWithUserAuth(uri, "fresher12", "12345678");
+	    IssueManager issueManager = mgr.getIssueManager();
+	   
+		try {
+			issues = issueManager.getIssues(projectKey, queryId);
+			for (Issue issue : issues) {
+				System.out.println(issue.getId()+issue.getSubject()+issue.getStatusName()+issue.getTracker().getName()+issue.getAssigneeName()+issue.getUpdatedOn()+issue.getPriorityText());
+//				IssueBean issueBean=new IssueBean();
+//				issueBean.setId_issue(issue.getId());
+//				issueBean.setTrackerName(issue.getTracker().getName());
+//				issueBean.setStatusName(issue.getStatusName());
+//				issueBean.setSubject(issue.getSubject());
+//				issueBean.setUpdatedOn(issue.getUpdatedOn());
+//				issueBean.setCategoryName(issue.getCategory().getName());
+//		        issueService.save(issueBean);
+		    }
+		} catch (RedmineException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -34,38 +63,25 @@ public class IssueController {
 	@RequestMapping(value = "/issue/", method = RequestMethod.GET)
 	public ResponseEntity<List<IssueBean>> listAll() {
 		
-		String uri = "http://www.redmine.org/projects/redmine";
-	    String apiAccessKey = "a3221bfcef5750219bd0a2df69519416dba17fc9";
-	    String projectKey = "redmine";
-	    Integer queryId = null; // any
-
-	    RedmineManager mgr = RedmineManagerFactory.createWithApiKey(uri, apiAccessKey);
-	    IssueManager issueManager = mgr.getIssueManager();
-	    List<Issue> issues;
-		try {
-			issues = issueManager.getIssues(projectKey, queryId);
 			for (Issue issue : issues) {
-				System.out.println(issue.toString());
 				IssueBean issueBean=new IssueBean();
 				issueBean.setId_issue(issue.getId());
 				issueBean.setTrackerName(issue.getTracker().getName());
 				issueBean.setStatusName(issue.getStatusName());
 				issueBean.setSubject(issue.getSubject());
 				issueBean.setUpdatedOn(issue.getUpdatedOn());
+				issueBean.setAssignee(issue.getAssigneeName());
+				issueBean.setPriorityText(issue.getPriorityText());
 //				issueBean.setCategoryName(issue.getCategory().getName());
 		        issueService.save(issueBean);
 		    }
-		} catch (RedmineException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		
 		List<IssueBean> list = issueService.getAllIssue();
-		if (list.isEmpty()) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-			// You many decide to return HttpStatus.NOT_FOUND
-		}
+		list.forEach(x -> System.out.println(x));
+		
+//		if (list.i) {
+//			return new ResponseEntity(HttpStatus.NO_CONTENT);
+//		}
 		return new ResponseEntity<List<IssueBean>>(list, HttpStatus.OK);
 	}
 

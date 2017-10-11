@@ -1,12 +1,13 @@
 package com.tuannh.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 @Document(indexName = "tuanissues", type = "issue")
-public class IssueBean {
+public class IssueBean implements Serializable{
 	@Id
 	private Integer id_issue;
 
@@ -14,8 +15,8 @@ public class IssueBean {
 //	private Integer parentId;
 //	private Float estimatedHours;
 //	private Float spentHours;
-//	private User assignee;
-//	private String priorityText;
+	private String assignee;
+	private String priorityText;
 //	private Integer priorityId;
 //	private Integer doneRatio;
 //	private Project project;
@@ -29,21 +30,22 @@ public class IssueBean {
 //	private Integer statusId;
 	private String statusName;
 //	private Version targetVersion;
-	private String categoryName;
+//	private String categoryName;
 	
 	public IssueBean() {
 		super();
 	}
 
-	public IssueBean(Integer id_issue, String subject, String trackerName, Date updatedOn, String statusName,
-			String categoryName) {
+	public IssueBean(Integer id_issue, String subject, String assignee, String priorityText, String trackerName,
+			Date updatedOn, String statusName) {
 		super();
 		this.id_issue = id_issue;
 		this.subject = subject;
+		this.assignee = assignee;
+		this.priorityText = priorityText;
 		this.trackerName = trackerName;
 		this.updatedOn = updatedOn;
 		this.statusName = statusName;
-		this.categoryName = categoryName;
 	}
 
 	public Integer getId_issue() {
@@ -60,6 +62,22 @@ public class IssueBean {
 
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+
+	public String getAssignee() {
+		return assignee;
+	}
+
+	public void setAssignee(String assignee) {
+		this.assignee = assignee;
+	}
+
+	public String getPriorityText() {
+		return priorityText;
+	}
+
+	public void setPriorityText(String priorityText) {
+		this.priorityText = priorityText;
 	}
 
 	public String getTrackerName() {
@@ -86,12 +104,14 @@ public class IssueBean {
 		this.statusName = statusName;
 	}
 
-	public String getCategoryName() {
-		return categoryName;
-	}
+//	public String getCategoryName() {
+//		return categoryName;
+//	}
+//
+//	public void setCategoryName(String categoryName) {
+//		this.categoryName = categoryName;
+//	}
 
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
+	
 
 }

@@ -3,6 +3,7 @@ package com.tuannh.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.tuannh.model.IssueBean;
@@ -26,7 +27,7 @@ public class IssueServiceImpl implements IssueService{
 
 	@Override
 	public List<IssueBean> getAllIssue() {
-		return (List<IssueBean>) issueRepository.findAll();
+		return  issueRepository.findAll(new PageRequest(0,3)).getContent();
 	}
 	
 }
