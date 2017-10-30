@@ -59,7 +59,7 @@ public class IssueController {
 		
 	}
 
-	// get list CardCenters
+						// get list issue
 
 	@RequestMapping(value = "/issue/", method = RequestMethod.GET)
 	public ResponseEntity<List<IssueBean>> listAll() {
@@ -73,7 +73,7 @@ public class IssueController {
 				issueBean.setUpdatedOn(issue.getUpdatedOn());
 				issueBean.setAssignee(issue.getAssigneeName());
 				issueBean.setPriorityText(issue.getPriorityText());
-//				issueBean.setCategoryName(issue.getCategory().getName());
+//				issueBean.setCategoryName(iss ue.getCategory().getName());
 		        issueService.save(issueBean);
 		    }
 		

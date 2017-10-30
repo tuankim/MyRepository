@@ -27,7 +27,7 @@ public class IssueServiceImpl implements IssueService{
 
 	@Override
 	public List<IssueBean> getAllIssue() {
-		return  issueRepository.findAll(new PageRequest(0,3)).getContent();
+		return  issueRepository.findAll(new PageRequest(0,10)).getContent();
 	}
 	
 }
